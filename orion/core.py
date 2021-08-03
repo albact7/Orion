@@ -51,6 +51,8 @@ class Orion:
             with open(pipeline) as json_file:
                 pipeline = json.load(json_file)
 
+        print("="*20)
+        print(pipeline)
         mlpipeline = MLPipeline(pipeline)
         if self._hyperparameters:
             mlpipeline.set_hyperparameters(self._hyperparameters)
@@ -80,6 +82,7 @@ class Orion:
                 Input data, passed as a ``pandas.DataFrame`` containing
                 exactly two columns: timestamp and value.
         """
+        print("Start fit()")
         self._mlpipeline = self._get_mlpipeline()
         self._mlpipeline.fit(data)
         self._fitted = True
@@ -109,6 +112,8 @@ class Orion:
             outputs_spec = 'default'
 
         outputs = method(data, output_=outputs_spec)
+        print("======== outputs =============")
+        print(outputs)
 
         if visualization:
             if visualization_names:
@@ -145,6 +150,7 @@ class Orion:
                 tuple containing the events DataFrame followed by the
                 visualization outputs dict.
         """
+        print("Start detect()")
         return self._detect(self._mlpipeline.predict, data, visualization)
 
     def fit_detect(self, data: pd.DataFrame, visualization: bool = False) -> pd.DataFrame:

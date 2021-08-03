@@ -15,8 +15,7 @@
             "method": "mean"
         },
         "sklearn.preprocessing.MinMaxScaler#1": {
-            "feature_range": [
-                -1,
+            "feature_range": [-1,
                 1
             ]
         },
@@ -34,9 +33,8 @@
             "fixed_threshold": true
         },
         "orion.primitives.tadgan.TadGAN#1": {
-            "epochs": 35,
-            "layers_encoder": [
-                {
+            "epochs": 5,
+            "layers_encoder": [{
                     "class": "keras.layers.Bidirectional",
                     "parameters": {
                         "layer": {
@@ -65,72 +63,71 @@
                     }
                 }
             ],
-            "layers_generator": [
-                    {
-                        "class": "keras.layers.Flatten",
-                        "parameters": {}
-                    },
-                    {
-                        "class": "keras.layers.Dense",
-                        "parameters": {
-                            "units": 50
-                        }
-                    },
-                    {
-                        "class": "keras.layers.Reshape",
-                        "parameters": {
-                            "target_shape": "generator_reshape_shape"
-                        }
-                    },
-                    {
-                        "class": "keras.layers.Bidirectional",
-                        "parameters": {
-                            "layer": {
-                                "class": "keras.layers.CuDNNLSTM",
-                                "parameters": {
-                                    "units": 64,
-                                    "return_sequences": true
-                                }
-                            },
-                            "merge_mode": "concat"
-                        }
-                    },
-                    {
-                        "class": "keras.layers.convolutional.UpSampling1D",
-                        "parameters": {
-                            "size": 2
-                        }
-                    },
-                    {
-                        "class": "keras.layers.Bidirectional",
-                        "parameters": {
-                            "layer": {
-                                "class": "keras.layers.CuDNNLSTM",
-                                "parameters": {
-                                    "units": 64,
-                                    "return_sequences": true
-                                }
-                            },
-                            "merge_mode": "concat"
-                        }
-                    },
-                    {
-                        "class": "keras.layers.TimeDistributed",
-                        "parameters": {
-                            "layer": {
-                                "class": "keras.layers.Dense",
-                                "parameters": {
-                                    "units": 1
-                                }
+            "layers_generator": [{
+                    "class": "keras.layers.Flatten",
+                    "parameters": {}
+                },
+                {
+                    "class": "keras.layers.Dense",
+                    "parameters": {
+                        "units": 50
+                    }
+                },
+                {
+                    "class": "keras.layers.Reshape",
+                    "parameters": {
+                        "target_shape": "generator_reshape_shape"
+                    }
+                },
+                {
+                    "class": "keras.layers.Bidirectional",
+                    "parameters": {
+                        "layer": {
+                            "class": "keras.layers.CuDNNLSTM",
+                            "parameters": {
+                                "units": 64,
+                                "return_sequences": true
+                            }
+                        },
+                        "merge_mode": "concat"
+                    }
+                },
+                {
+                    "class": "keras.layers.convolutional.UpSampling1D",
+                    "parameters": {
+                        "size": 2
+                    }
+                },
+                {
+                    "class": "keras.layers.Bidirectional",
+                    "parameters": {
+                        "layer": {
+                            "class": "keras.layers.CuDNNLSTM",
+                            "parameters": {
+                                "units": 64,
+                                "return_sequences": true
+                            }
+                        },
+                        "merge_mode": "concat"
+                    }
+                },
+                {
+                    "class": "keras.layers.TimeDistributed",
+                    "parameters": {
+                        "layer": {
+                            "class": "keras.layers.Dense",
+                            "parameters": {
+                                "units": 1
                             }
                         }
-                    },
-                    {
-                        "class": "keras.layers.Activation",
-                        "parameters": {
-                            "activation": "tanh"
-                        }
                     }
+                },
+                {
+                    "class": "keras.layers.Activation",
+                    "parameters": {
+                        "activation": "tanh"
+                    }
+                }
             ]
         }
     },

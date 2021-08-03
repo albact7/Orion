@@ -19,7 +19,7 @@ except IOError:
 install_requires = [
     's3fs>=0.2.2,<0.5',
     'baytune>=0.2.3,<0.3',
-    'mlblocks>=0.3.0,<0.4',
+    'mlblocks>=0.3.0',
     'mlprimitives>=0.2.2,<0.3',
     'mongoengine>=0.16.3,<0.17',
     'numpy>=1.15.4,<1.17',
